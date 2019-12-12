@@ -4,12 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.geekhub.homework_5.R;
+import com.geekhub.homework_5.SettingsActivity;
 import com.geekhub.homework_5.data.Repository;
 import com.geekhub.homework_5.data.WeatherItem;
 import java.util.List;
@@ -26,7 +31,6 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setElevation(0f);
         mHandler = new Handler();
 
         progressBar = findViewById(R.id.progressBar);
@@ -38,6 +42,24 @@ public class WeatherActivity extends AppCompatActivity implements WeatherContrac
         Repository repository = new Repository();
         mWeatherPresenter = new WeatherPresenter(this, repository);
         mWeatherPresenter.init();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.id_settings:
+                Intent intent = new Intent( this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
