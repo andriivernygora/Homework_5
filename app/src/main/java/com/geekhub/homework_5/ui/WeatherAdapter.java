@@ -44,28 +44,39 @@ class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.WeatherViewHold
             String srt = "d" + weatherItem.getIcon();
             switch (srt) {
                 case "d01d":
+                case "d01n":
                     mIcon.setImageResource(R.drawable.d01d);
                     break;
+                case "d02n":
                 case "d02d":
                     mIcon.setImageResource(R.drawable.d02d);
                     break;
                 case "d03d":
+                case "d03n":
                     mIcon.setImageResource(R.drawable.d03d);
                     break;
                 case "d04d":
+                case "d04n":
                     mIcon.setImageResource(R.drawable.d04d);
                     break;
                 case "d09d":
+                case "d09n":
                     mIcon.setImageResource(R.drawable.d09d);
                     break;
                 case "d10d":
+                case "d10n":
                     mIcon.setImageResource(R.drawable.d10d);
                     break;
                 case "d11d":
+                case "d11n":
                     mIcon.setImageResource(R.drawable.d11d);
                     break;
                 case "d13d":
+                case "d13n":
                     mIcon.setImageResource(R.drawable.d13d);
+                    break;
+                default:
+                    mIcon.setImageResource(R.drawable.cloud);
                     break;
             }
         }
